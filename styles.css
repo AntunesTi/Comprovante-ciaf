@@ -152,7 +152,7 @@ input[type="text"]::placeholder {
     accent-color: var(--secondary-color);
 }
 
-.radio-label input[type="radio"]:checked + span {
+.radio-label input[type="radio"]:checked+span {
     color: var(--secondary-color);
     font-weight: 600;
 }
@@ -163,11 +163,19 @@ input[type="text"]::placeholder {
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-/* Button */
-.btn-generate {
+/* Button Group */
+.button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Buttons */
+.btn-generate,
+.btn-print {
     width: 100%;
     padding: 1.25rem 2rem;
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
     color: var(--white);
     border: none;
     border-radius: 12px;
@@ -180,19 +188,29 @@ input[type="text"]::placeholder {
     gap: 0.75rem;
     transition: all 0.3s ease;
     box-shadow: var(--shadow);
-    margin-top: 2rem;
 }
 
-.btn-generate:hover {
+.btn-generate {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+}
+
+.btn-print {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.btn-generate:hover,
+.btn-print:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
-.btn-generate:active {
+.btn-generate:active,
+.btn-print:active {
     transform: translateY(0);
 }
 
-.btn-generate svg {
+.btn-generate svg,
+.btn-print svg {
     width: 24px;
     height: 24px;
 }
@@ -238,6 +256,10 @@ footer p {
         grid-template-columns: 1fr;
     }
 
+    .button-group {
+        grid-template-columns: 1fr;
+    }
+
     header,
     footer {
         padding: 1.5rem;
@@ -263,6 +285,7 @@ footer p {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

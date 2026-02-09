@@ -76,31 +76,27 @@ async function gerarPDF(dados) {
     });
 
     try {
-        // Adicionar logo (SVG convertido para imagem)
-        const logoData = await getImageDataURL('brasao-prefeitura.svg');
-        const logoWidth = 25;
-        const logoHeight = 25;
-        doc.addImage(logoData, 'PNG', 15, 15, logoWidth, logoHeight);
+        // Adicionar logo centralizada
+        const logoData = await getImageDataURL('pinda.png');
+        const logoWidth = 30;
+        const logoHeight = 30;
+        const logoX = (210 - logoWidth) / 2;
+        doc.addImage(logoData, 'PNG', logoX, 20, logoWidth, logoHeight);
     } catch (error) {
         console.warn('Não foi possível carregar a logo:', error);
     }
 
-    // Informações do CIAF - Header compacto
+    // Informações do CIAF - Header centralizado com texto menor
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10);
+    doc.setFontSize(9);
     doc.setTextColor(30, 58, 138);
-    doc.text('CIAF - Centro Integrado de Atendimento à Saúde da Mulher', 45, 20);
+    doc.text('CIAF - Centro Integrado de Atendimento à Saúde da Mulher', 105, 56, { align: 'center' });
 
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
+    doc.setFontSize(7);
     doc.setTextColor(107, 114, 128);
-    doc.text('R. João Gama, 115 - São Benedito, Pindamonhangaba - SP, 12410-260', 45, 26);
-    doc.text('(12) 3648-1518', 45, 31);
-
-    // Linha separadora do header
-    doc.setDrawColor(30, 58, 138);
-    doc.setLineWidth(0.3);
-    doc.line(15, 45, 195, 45);
+    doc.text('R. João Gama, 115 - São Benedito, Pindamonhangaba - SP, 12410-260', 105, 61, { align: 'center' });
+    doc.text('(12) 3648-1518', 105, 65, { align: 'center' });
 
     // Configurações de fonte para título
     doc.setFont('helvetica', 'bold');
@@ -108,12 +104,12 @@ async function gerarPDF(dados) {
     doc.setTextColor(31, 41, 55);
 
     // Título
-    doc.text('DECLARAÇÃO DE COMPARECIMENTO', 105, 60, { align: 'center' });
+    doc.text('DECLARAÇÃO DE COMPARECIMENTO', 105, 85, { align: 'center' });
 
     // Linha decorativa
     doc.setDrawColor(30, 58, 138);
     doc.setLineWidth(0.5);
-    doc.line(50, 65, 160, 65);
+    doc.line(50, 90, 160, 90);
 
     // Corpo do texto
     doc.setFont('helvetica', 'normal');
@@ -124,7 +120,7 @@ async function gerarPDF(dados) {
     const margemDireita = 180;
     const larguraTexto = margemDireita - margemEsquerda;
 
-    let y = 80;
+    let y = 110;
 
     // Texto da declaração
     const texto = `Declaramos para os devidos fins que ${dados.nome}, portador(a) do CPF ${dados.cpf}, permaneceu em nossa unidade no dia ${formatarData(dados.data)} das ${dados.horaEntrada} às ${dados.horaSaida} para ${dados.motivo}.`;
@@ -209,31 +205,27 @@ async function imprimirDeclaracao(dados) {
     });
 
     try {
-        // Adicionar logo (SVG convertido para imagem)
-        const logoData = await getImageDataURL('brasao-prefeitura.svg');
-        const logoWidth = 25;
-        const logoHeight = 25;
-        doc.addImage(logoData, 'PNG', 15, 15, logoWidth, logoHeight);
+        // Adicionar logo centralizada
+        const logoData = await getImageDataURL('pinda.png');
+        const logoWidth = 30;
+        const logoHeight = 30;
+        const logoX = (210 - logoWidth) / 2;
+        doc.addImage(logoData, 'PNG', logoX, 20, logoWidth, logoHeight);
     } catch (error) {
         console.warn('Não foi possível carregar a logo:', error);
     }
 
-    // Informações do CIAF - Header compacto
+    // Informações do CIAF - Header centralizado com texto menor
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10);
+    doc.setFontSize(9);
     doc.setTextColor(30, 58, 138);
-    doc.text('CIAF - Centro Integrado de Atendimento à Saúde da Mulher', 45, 20);
+    doc.text('CIAF - Centro Integrado de Atendimento à Saúde da Mulher', 105, 56, { align: 'center' });
 
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
+    doc.setFontSize(7);
     doc.setTextColor(107, 114, 128);
-    doc.text('R. João Gama, 115 - São Benedito, Pindamonhangaba - SP, 12410-260', 45, 26);
-    doc.text('(12) 3648-1518', 45, 31);
-
-    // Linha separadora do header
-    doc.setDrawColor(30, 58, 138);
-    doc.setLineWidth(0.3);
-    doc.line(15, 45, 195, 45);
+    doc.text('R. João Gama, 115 - São Benedito, Pindamonhangaba - SP, 12410-260', 105, 61, { align: 'center' });
+    doc.text('(12) 3648-1518', 105, 65, { align: 'center' });
 
     // Configurações de fonte para título
     doc.setFont('helvetica', 'bold');
@@ -241,12 +233,12 @@ async function imprimirDeclaracao(dados) {
     doc.setTextColor(31, 41, 55);
 
     // Título
-    doc.text('DECLARAÇÃO DE COMPARECIMENTO', 105, 60, { align: 'center' });
+    doc.text('DECLARAÇÃO DE COMPARECIMENTO', 105, 85, { align: 'center' });
 
     // Linha decorativa
     doc.setDrawColor(30, 58, 138);
     doc.setLineWidth(0.5);
-    doc.line(50, 65, 160, 65);
+    doc.line(50, 90, 160, 90);
 
     // Corpo do texto
     doc.setFont('helvetica', 'normal');
@@ -257,7 +249,7 @@ async function imprimirDeclaracao(dados) {
     const margemDireita = 180;
     const larguraTexto = margemDireita - margemEsquerda;
 
-    let y = 80;
+    let y = 110;
 
     // Texto da declaração
     const texto = `Declaramos para os devidos fins que ${dados.nome}, portador(a) do CPF ${dados.cpf}, permaneceu em nossa unidade no dia ${formatarData(dados.data)} das ${dados.horaEntrada} até ${dados.horaSaida} para ${dados.motivo}.`;

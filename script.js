@@ -78,7 +78,7 @@ async function gerarPDF(dados) {
     try {
         // Adicionar logo centralizada
         const logoData = await getImageDataURL('pinda.png');
-        const logoWidth = 30;
+        const logoWidth = 35;
         const logoHeight = 30;
         const logoX = (210 - logoWidth) / 2;
         doc.addImage(logoData, 'PNG', logoX, 20, logoWidth, logoHeight);
@@ -207,7 +207,7 @@ async function imprimirDeclaracao(dados) {
     try {
         // Adicionar logo centralizada
         const logoData = await getImageDataURL('pinda.png');
-        const logoWidth = 30;
+        const logoWidth = 35;
         const logoHeight = 30;
         const logoX = (210 - logoWidth) / 2;
         doc.addImage(logoData, 'PNG', logoX, 20, logoWidth, logoHeight);
